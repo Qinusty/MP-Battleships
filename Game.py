@@ -124,7 +124,7 @@ class Board(object):
             return False
 
     def place_ships(self):
-        ships_to_place = [5,4,3,2,2,1,1] # lengths
+        ships_to_place = [1] # [5,4,3,2,2,1,1] # lengths
         help = """Time to place your ships!
         Ships can be placed in the format
         x y length direction e,g. '5 4 4 N'
@@ -160,18 +160,20 @@ class Board(object):
     def print(self, side_by_side=False):
         y = 0
         lines = []
-        lines.append("  Your grid:" + (" "*((grid_size*2)-12)))
-        lines.append("  " + " ".join([str(x) for x in range(grid_size)]))
+        lines.append("   Your grid:" + (" "*((grid_size*2)-12)))
+        lines.append("   " + " ".join([str(x) for x in range(grid_size)]))
+        lines.append(" ")
         for row in self.boards[0]:
-            lines.append(str(y) + " " + " ".join(row))
+            lines.append(str(y) + "  " + " ".join(row))
             y += 1
-	y = 0
+        y = 0
         if side_by_side:
             opponent = []
-            opponent.append("  Opponent grid:" + (" "*((grid_size*2)-16)))
-            opponent.append("  " + " ".join([str(x) for x in range(grid_size)]))
+            opponent.append("   Opponent grid:" + (" "*((grid_size*2)-16)))
+            opponent.append("   " + " ".join([str(x) for x in range(grid_size)]))
+            opponent.append(" ")
             for row in self.boards[1]:
-                opponent.append(str(y) + " " + " ".join(row))
+                opponent.append(str(y) + "  " + " ".join(row))
                 y += 1
             lines = Utils.myJoin(opponent, lines, " "*10)
         print("\n")
