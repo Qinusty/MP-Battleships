@@ -127,7 +127,7 @@ class Board(object):
         ships_to_place = [1] # [5,4,3,2,2,1,1] # lengths
         help = """Time to place your ships!
         Ships can be placed in the format
-        x y length direction e,g. '5 4 4 N'
+        x y length direction e,g. '5 4 4 S'
         where direction is either S or E in respect to compass directions
         This help can be displayed at any point during setup by typing '/help'"""
         print(help)
@@ -137,7 +137,7 @@ class Board(object):
             self.print()
             entry = input('> ')
             entry = entry.strip().split(' ')
-            if entry[0] == '/help':
+            if entry[0] == '/help' or len(entry) < 4:
                 print(help)
             elif len(entry) == 4 and (entry[0].isnumeric()  # X
                                  and  entry[1].isnumeric()  # Y
